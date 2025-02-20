@@ -1,6 +1,5 @@
-﻿* Encoding: UTF-8.
+* Encoding: UTF-8.
 
-/* Author: Mayank Nauni – 1004741 ( PhD Student )
 
 /* Research Title: Impact of Generative AI on Cybersecurity Posture of Critical Infrastructure 
 
@@ -763,7 +762,7 @@ COMPUTE PostMinusPre=PostTrainingScore - PreTrainingScore.
 FORMATS PostMinusPre (F1.0) .
 EXECUTE.
 
-/* Tagging by participation controlgroups (IISc, SUTD, EnergyProfessionals)
+/* Tagging by participation controlgroups (RU3, RU1, EnergyProfessionals)
     
 * First, ensure that the "SubmitDateUTC" variable is in a date-time format.
 FORMATS SubmitDateUTC (DATETIME16).
@@ -776,9 +775,9 @@ COMPUTE SubmitDateOnly = XDATE.DATE(SubmitDateUTC).
 FORMATS SubmitDateOnly (DATE11).
 
 * Tagging the data based on the specified dates.
-IF (SubmitDateOnly = DATE.DMY(19, 7, 2024)) GroupTag = "IIScControlGroup".
-IF (SubmitDateOnly = DATE.DMY(20, 7, 2024)) GroupTag = "SUTDControlGroup1".
-IF (SubmitDateOnly = DATE.DMY(29, 7, 2024)) GroupTag = "SUTDControlGroup2".
+IF (SubmitDateOnly = DATE.DMY(19, 7, 2024)) GroupTag = "RU3ControlGroup".
+IF (SubmitDateOnly = DATE.DMY(20, 7, 2024)) GroupTag = "RU1ControlGroup1".
+IF (SubmitDateOnly = DATE.DMY(29, 7, 2024)) GroupTag = "RU1ControlGroup2".
 IF (SubmitDateOnly = DATE.DMY(4, 8, 2024)) GroupTag = "EnergySectorProfessionals".
 * Tagging remaining entries as "InternetParticipation".
 IF (GroupTag = "") GroupTag = "InternetParticipation".
@@ -788,15 +787,15 @@ EXECUTE.
 IF (GroupTag = "") GroupTag = "InternetParticipation".
 EXECUTE.
 
-RECODE GroupTag ('IIScControlGroup'=1) ('InternetParticipation'=2) ('SUTDControlGroup1'=3) 
-    ('SUTDControlGroup2'=4) ('PowerGridProfessionals'=5) INTO GroupTag_num.
+RECODE GroupTag ('RU3ControlGroup'=1) ('InternetParticipation'=2) ('RU1ControlGroup1'=3) 
+    ('RU1ControlGroup2'=4) ('PowerGridProfessionals'=5) INTO GroupTag_num.
 VARIABLE LABELS  GroupTag_num 'GroupTag_num'.
 FORMATS GroupTag_num (F1.0) .
 ADD VALUE LABELS Gender_num
-    1 "IIScControlGroup"
+    1 "RU3ControlGroup"
     2 "InternetParticipation" 
-    3 "SUTDControlGroup1"
-    4 "SUTDControlGroup2"
+    3 "RU1ControlGroup1"
+    4 "RU1ControlGroup2"
     5 "EnergySectorProfessionals".
 EXECUTE.
 
@@ -1196,22 +1195,4 @@ CROSSTABS
   /FORMAT=AVALUE TABLES
   /CELLS=COUNT
   /COUNT ROUND CELL.
-
-/*Inference:
-
-
-/* Independent sample T-Test for Clicks and Scores /* 
-
-T-TEST GROUPS=PostMinusPre(1 2)
-  /MISSING=ANALYSIS
-  /VARIABLES=totalclicks
-  /ES DISPLAY(TRUE)
-  /CRITERIA=CI(.95).
-
-
-
-
-
-
-
 
