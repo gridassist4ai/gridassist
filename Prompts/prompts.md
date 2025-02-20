@@ -584,7 +584,3 @@ A user should only have the least privileges and permission.
 
 _**End of Questionnaire**_
 
-This document offers a structure for question-answer interactions within various power grid cybersecurity  
-scenarios. Each question includes a sample prompt sequence, illustrating how participants might query  
-a Generative AI system multiple times. The scoring framework correlates the number of prompts used to  
-reach a correct conclusion with the final score, promoting efficient and strategic question formulation.
