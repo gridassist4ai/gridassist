@@ -1,7 +1,7 @@
 # Questionnaire with Prompt Sequences
 
-Below is a consolidated questionnaire for scenarios related to cybersecurity in power grid systems.  
-Each question includes placeholders for multiple prompts, reflecting a scoring mechanism where the  
+Below is a consolidated questionnaire for scenarios.  
+Each question includes multiple prompts, reflecting a scoring mechanism where the  
 number of prompts used to reach the correct response determines the allocated points.
 
 ---
